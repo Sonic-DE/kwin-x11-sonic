@@ -59,7 +59,6 @@ option(KWIN_BUILD_NIGHTLIGHT "Enable building of KWin with nightlight support" O
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Concurrent
     Core
-    Core5Compat
     DBus
     Quick
     UiTools

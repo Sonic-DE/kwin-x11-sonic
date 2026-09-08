@@ -5,7 +5,7 @@
 */
 
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import QtQuick.Layouts
 import org.kde.kwin as KWinComponents
 import org.kde.kwin_x11.private.effects
@@ -77,9 +77,12 @@ FocusScope {
         property real blurRadius: root.active ? 64 : 0
 
         layer.enabled: true
-        layer.effect: FastBlur {
-            radius: blurredWindows.blurRadius
-            Behavior on radius {
+        layer.effect: MultiEffect {
+            blurEnabled: true
+            blurMax: 64
+            blurMultiplier: 0
+            blur: Math.min(1, Math.max(0, blurredWindows.blurRadius / 64))
+            Behavior on blur {
                 NumberAnimation {
                     duration: effect.animationDuration
                     easing.type: Easing.OutCubic

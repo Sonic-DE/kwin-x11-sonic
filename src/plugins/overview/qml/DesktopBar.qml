@@ -8,7 +8,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import org.kde.kirigami as Kirigami
 import org.kde.kwin as KWinComponents
 import org.kde.kwin_x11.private.effects
@@ -125,13 +125,15 @@ Item {
 
                             layer.textureSize: Qt.size(bar.desktopWidth, bar.desktopHeight)
                             layer.enabled: true
-                            layer.effect: OpacityMask {
+                            layer.effect: MultiEffect {
+                                maskEnabled: true
                                 maskSource: Rectangle {
                                     anchors.centerIn: parent
                                     width: thumbnail.width
                                     height: thumbnail.height
                                     // Using 5% of width since that's constant even under scaling:
                                     radius: width / 20
+                                    layer.enabled: true
                                 }
                             }
                         }

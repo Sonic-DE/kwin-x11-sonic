@@ -354,10 +354,11 @@ FocusScope {
             heap.focus = true;
             break;
         case Qt.Key_Space:
-            if (!heap.focus) {
+        case Qt.Key_Return: {
+            // Space only activates a window when the heap itself has focus.
+            if (event.key === Qt.Key_Space && !heap.focus) {
                 break;
             }
-        case Qt.Key_Return:
             handled = false;
             let selectedItem = null;
             if (selectedIndex !== -1) {
@@ -381,6 +382,7 @@ FocusScope {
                 activated();
             }
             break;
+        }
         default:
             return;
         }

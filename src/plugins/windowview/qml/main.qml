@@ -6,7 +6,7 @@
 */
 
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import QtQuick.Layouts
 import org.kde.kwin as KWinComponents
 import org.kde.kwin_x11.private.effects
@@ -67,9 +67,12 @@ Item {
         outputName: targetScreen.name
 
         layer.enabled: true
-        layer.effect: FastBlur {
-            radius: container.organized ? 64 : 0
-            Behavior on radius {
+        layer.effect: MultiEffect {
+            blurEnabled: true
+            blurMax: 64
+            blurMultiplier: 0
+            blur: container.organized ? 1 : 0
+            Behavior on blur {
                 NumberAnimation { duration: container.effect.animationDuration; easing.type: Easing.OutCubic }
             }
         }

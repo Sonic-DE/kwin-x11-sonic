@@ -7,7 +7,7 @@
 */
 
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kwin as KWinComponents
@@ -252,10 +252,13 @@ FocusScope {
             outputName: targetScreen.name
             visible: false
         }
-        FastBlur {
+        MultiEffect {
             anchors.fill: parent
             source: backgroundItem
-            radius: 64
+            blurEnabled: true
+            blurMax: 64
+            blur: 1
+            blurMultiplier: 0
         }
     }
 
