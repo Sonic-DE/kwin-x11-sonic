@@ -305,8 +305,8 @@ void X11StandaloneBackend::doUpdateOutputs()
                     if (info->mode == mode.id) {
                         if (mode.htotal != 0 && mode.vtotal != 0) { // BUG 313996
                             // refresh rate calculation - WTF was wikipedia 1998 when I needed it?
-                            int dotclock = mode.dot_clock,
-                                vtotal = mode.vtotal;
+                            uint64_t dotclock = mode.dot_clock,
+                                     vtotal = mode.vtotal;
                             if (mode.mode_flags & XCB_RANDR_MODE_FLAG_INTERLACE) {
                                 dotclock *= 2;
                             }
